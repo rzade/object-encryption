@@ -1,13 +1,12 @@
+'use strict';
 var jwt = require('jsonwebtoken');
 
 // todo test
-sendExpireSecond('dfghjk', { a: 1, b: 2 }).then(a => {
-	console.log(a)
+send('dfghjk', { a: 1, b: 2 }).then(a => {
+	admit('dfghjk', a).then(b => {
+		console.log(b)
+	}).catch(e => console.log(e));
 });
-
-admit('dfghjk', 'esyJhbGciOiJIUzI1NidIsIfnR5gcCIh6IkjpXVkCJ9.eyJhIjoxLCJiIjoyLCJpYXQiOjE2MTYwMDM1MjZ9.-C3D_6V2sVXbtKp_AHsFFm_dkF7MQW7ADVU9lrrxm74').then(a => {
-	console.log(a)
-}).catch(e => console.log(e));
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
