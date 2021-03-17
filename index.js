@@ -1,13 +1,6 @@
 'use strict';
 var jwt = require('jsonwebtoken');
 
-// todo test
-send('dfghjk', { a: 1, b: 2 }).then(a => {
-	admit('dfghjk', a).then(b => {
-		console.log(b)
-	}).catch(e => console.log(e));
-});
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function send(secret, data){
@@ -29,6 +22,7 @@ function admit(secret, data){
 		const decoded_data = decodeR(secret, data);
 		jwt.verify(decoded_data, secret, function(err, decoded) {
 			if(decoded){
+				delete decoded.iat;
 				resolve(decoded);
 			} else {
 				reject({ error: { message: 'Not used anymore!' } });
@@ -83,3 +77,5 @@ function encodeR(secret, encode){
 	});
 	return [...before, ...last].join('');
 }
+
+module.exports = { send, sendExpireSecond, admit };
