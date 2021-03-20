@@ -1,8 +1,6 @@
 'use strict';
 var jwt = require('jsonwebtoken');
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 function send(secret, data){
 	return new Promise(function(resolve, reject) {
 		var token = jwt.sign(data, secret);
